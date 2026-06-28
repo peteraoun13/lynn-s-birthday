@@ -1,0 +1,572 @@
+:root {
+  color: #73485b;
+  background: #e8ddd2;
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  background: #e8ddd2;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #f8f3eb;
+  box-shadow: 0 0 60px rgb(83 53 48 / 16%);
+}
+
+.app-shell.opening-active {
+  height: 100dvh;
+}
+
+.opening-screen {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  width: min(100%, 430px);
+  height: 100dvh;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  color: #f4b5ce;
+  background-color: #f6f1e9;
+  background-image: url("/assets/main-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  opacity: 1;
+  transition: opacity 800ms ease, filter 800ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.opening-screen--fading {
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.opening-screen__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.opening-screen::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 22%;
+  background: linear-gradient(to bottom, transparent, rgb(181 105 135 / 6%));
+}
+
+.opening-screen__prompt {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: max(7%, calc(env(safe-area-inset-bottom) + 24px));
+  transform: translateX(-50%);
+  color: #c8638b;
+  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgb(255 255 255 / 90%), 0 0 14px rgb(235 128 169 / 42%);
+  animation: prompt-pulse 2.2s ease-in-out infinite;
+}
+
+.birthday-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  padding: max(54px, calc(env(safe-area-inset-top) + 26px)) 18px calc(28px + env(safe-area-inset-bottom));
+  overflow: hidden;
+  background-color: #f8f4ed;
+  background-image: linear-gradient(rgb(255 252 247 / 12%), rgb(255 252 247 / 12%)), url("/assets/main-bg.jpg");
+  background-size: cover;
+  background-position: top center;
+  opacity: 0;
+  transform: scale(1.01);
+  transition: opacity 950ms ease, transform 1200ms ease;
+}
+
+.birthday-page--revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.decorations {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.decoration {
+  position: absolute;
+  display: block;
+  max-width: none;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 5px rgb(94 62 55 / 8%));
+  user-select: none;
+}
+
+.top-photo {
+  z-index: 3;
+  top: 165px;
+  left: 50%;
+  width: 140px;
+  transform: translateX(-50%) rotate(-1.5deg);
+}
+
+.stars-left {
+  top: 190px;
+  left: 5px;
+  width: 82px;
+  transform: rotate(-12deg);
+}
+
+.stars-right {
+  top: 192px;
+  right: 4px;
+  width: 78px;
+  transform: rotate(11deg);
+}
+
+.polaroid-line {
+  z-index: 2;
+  top: 380px;
+  left: 50%;
+  width: 114%;
+  transform: translateX(-50%);
+}
+
+.birthday-header,
+.collage-space,
+.countdown-section,
+.love-note,
+.date-section,
+.birthday-footer {
+  position: relative;
+  z-index: 4;
+}
+
+.birthday-header {
+  text-align: center;
+}
+
+.script-title {
+  margin: 2px 0 0;
+  color: #c7658c;
+  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+  max-width: 100%;
+  font-size: clamp(35px, 9.7vw, 42px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-shadow: 0 2px 0 rgb(255 255 255 / 75%);
+  transform: rotate(-1deg);
+}
+
+.tiny-dedication {
+  margin: 9px 0 0;
+  color: #aa536f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.36em;
+  text-shadow: 0 1px 0 rgb(255 255 255 / 85%);
+}
+
+.collage-space {
+  height: 508px;
+}
+
+.countdown-section {
+  margin: 44px 8px 0;
+  padding: 17px 2px 20px;
+  text-align: center;
+  border: 0;
+  border-top: 1px solid rgb(200 116 148 / 30%);
+  border-bottom: 1px solid rgb(200 116 148 / 30%);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: #9b5b70;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.07em;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #dca3b8);
+}
+
+.eyebrow::after {
+  transform: scaleX(-1);
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.countdown__item {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 75px;
+  padding: 7px 2px 5px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.countdown__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  right: 0;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(transparent, rgb(202 118 150 / 36%), transparent);
+}
+
+.countdown__number {
+  color: #a94f74;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(31px, 8.6vw, 38px);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.countdown__label {
+  margin-top: 9px;
+  color: #9c7b83;
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+.countdown__divider {
+  display: none;
+}
+
+.love-note {
+  display: grid;
+  grid-template-columns: 98px minmax(0, 1fr) 88px;
+  align-items: center;
+  gap: 5px;
+  min-height: 205px;
+  margin-top: 62px;
+  padding: 28px 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.love-note::before {
+  display: none;
+}
+
+.love-note__copy {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.love-note p {
+  margin: 0;
+  color: #b65e80;
+  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: 23px;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.love-note span {
+  display: block;
+  margin-top: 9px;
+  color: #d8789d;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  animation: heart-beat 1.8s ease-in-out infinite;
+}
+
+.love-decoration {
+  position: relative;
+  z-index: 1;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 5px 5px rgb(94 62 55 / 8%));
+}
+
+.love-bouquet {
+  left: -12px;
+  width: 122px;
+  transform: rotate(6deg);
+}
+
+.love-baby {
+  right: -8px;
+  width: 102px;
+  transform: rotate(-3deg);
+}
+
+.date-section {
+  margin-top: 32px;
+  padding: 37px 12px 30px;
+  border: 1px solid rgb(192 108 140 / 20%);
+  border-radius: 30px;
+  text-align: center;
+  background: rgb(255 253 249 / 78%);
+  box-shadow: 0 14px 45px rgb(102 66 64 / 9%);
+  backdrop-filter: blur(5px);
+}
+
+.date-section::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 62px;
+  height: 16px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: rgb(227 164 187 / 40%);
+}
+
+.date-section__title {
+  margin: 0;
+  color: #93586d;
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+}
+
+.date-section__subtitle {
+  margin: 9px 0 25px;
+  color: #bd718d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.date-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.date-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 108px;
+  padding: 15px 2px 12px;
+  border: 1px solid #ead2da;
+  border-radius: 16px;
+  color: #805a67;
+  background: rgb(255 255 255 / 62%);
+  box-shadow: 0 4px 12px rgb(113 75 79 / 5%);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.date-card:active {
+  transform: scale(0.97);
+}
+
+.date-card--selected {
+  border-color: #d67c9e;
+  color: #a44f70;
+  background: linear-gradient(145deg, rgb(255 250 252 / 95%), rgb(248 221 232 / 85%));
+  box-shadow: 0 9px 22px rgb(205 104 143 / 22%), 0 0 0 2px rgb(235 153 184 / 14%);
+  transform: translateY(-5px);
+}
+
+.date-card--selected:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.date-card__day,
+.date-card__date,
+.date-card__heart {
+  display: block;
+}
+
+.date-card__day {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+}
+
+.date-card__date {
+  margin-top: 9px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.date-card__heart {
+  margin-top: 11px;
+  color: #d66f97;
+  font-family: Georgia, serif;
+  font-size: 14px;
+}
+
+.submit-date {
+  width: min(100%, 245px);
+  margin: 27px auto 0;
+  padding: 13px 18px;
+  border: 1px solid #d981a2;
+  border-radius: 999px;
+  color: #fffafc;
+  background: linear-gradient(135deg, #cf7395, #b95f82);
+  box-shadow: 0 8px 20px rgb(190 94 130 / 22%);
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.submit-date:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 4px 11px rgb(190 94 130 / 18%);
+}
+
+.submit-message {
+  min-height: 16px;
+  margin: 11px 0 0;
+  color: #ae6880;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.birthday-footer {
+  padding: 24px 0 2px;
+  color: #b89aa4;
+  text-align: center;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@keyframes prompt-pulse {
+  0%, 100% { opacity: 0.68; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.025); }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+}
+
+@media (min-width: 431px) {
+  body {
+    background: radial-gradient(circle at 50% 20%, #f4ece4, #ddd0c5);
+  }
+
+  .app-shell {
+    min-height: 100dvh;
+  }
+}
+
+@media (max-width: 360px) {
+  .birthday-page { padding-top: max(48px, calc(env(safe-area-inset-top) + 22px)); }
+  .top-photo { top: 155px; width: 126px; }
+  .stars-left { top: 181px; left: 1px; width: 72px; }
+  .stars-right { top: 183px; right: 1px; width: 70px; }
+  .polaroid-line { top: 362px; width: 118%; }
+  .collage-space { height: 486px; }
+  .countdown-section { margin-inline: 3px; }
+  .countdown__item { min-height: 70px; }
+  .love-note {
+    grid-template-columns: 84px minmax(0, 1fr) 74px;
+    gap: 3px;
+    min-height: 190px;
+    margin-top: 54px;
+    padding: 24px 0;
+  }
+  .love-note p { font-size: 20px; }
+  .love-bouquet { left: -12px; width: 108px; }
+  .love-baby { right: -7px; width: 91px; }
+  .date-section { padding-inline: 10px; }
+  .date-cards { gap: 6px; }
+  .date-section__title { font-size: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
