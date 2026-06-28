@@ -67,6 +67,16 @@ export default function BirthdayPage({ isRevealed }) {
         <Countdown />
       </section>
 
+      <section className="love-note">
+        {/* Replace this romantic note with your own text. */}
+        <img className="love-decoration love-bouquet" src="/assets/bouquet.png" alt="" aria-hidden="true" />
+        <div className="love-note__copy">
+          <p>i love you so much.</p>
+          <span aria-hidden="true">♡</span>
+        </div>
+        <img className="love-decoration love-baby" src="/assets/baby.png" alt="" aria-hidden="true" />
+      </section>
+
       <section className="date-section">
         {/* Replace these lines with your preferred date invitation. */}
         <p className="date-section__title">LET’S SPEND A DAY TOGETHER ✧</p>
@@ -82,21 +92,11 @@ export default function BirthdayPage({ isRevealed }) {
           ))}
         </div>
         <button className="submit-date" type="button" onClick={submitDateChoice}>
-          submit &amp; send my choice ♡
+          submit
         </button>
         <p className="submit-message" role="status" aria-live="polite">
           {submitMessage}
         </p>
-      </section>
-
-      <section className="love-note">
-        {/* Replace this romantic note with your own text. */}
-        <img className="love-decoration love-bouquet" src="/assets/bouquet.png" alt="" aria-hidden="true" />
-        <div className="love-note__copy">
-          <p>i love you so much.</p>
-          <span aria-hidden="true">♡</span>
-        </div>
-        <img className="love-decoration love-baby" src="/assets/baby.png" alt="" aria-hidden="true" />
       </section>
 
       <footer className="birthday-footer">made with all my love · 2026</footer>

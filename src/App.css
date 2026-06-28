@@ -306,11 +306,11 @@ button {
 
 .love-note {
   display: grid;
-  grid-template-columns: 98px minmax(0, 1fr) 88px;
+  grid-template-columns: 108px minmax(0, 1fr) 104px;
   align-items: center;
-  gap: 5px;
+  gap: 2px;
   min-height: 205px;
-  margin-top: 62px;
+  margin: 62px -18px 0;
   padding: 28px 0;
   overflow: hidden;
   text-align: center;
@@ -356,14 +356,14 @@ button {
 }
 
 .love-bouquet {
-  left: -12px;
-  width: 122px;
+  left: -20px;
+  width: 132px;
   transform: rotate(6deg);
 }
 
 .love-baby {
-  right: -8px;
-  width: 102px;
+  right: 24px;
+  width: 165px;
   transform: rotate(-3deg);
 }
 
@@ -476,7 +476,7 @@ button {
 }
 
 .submit-date {
-  width: min(100%, 245px);
+  width: min(100%, 100px);
   margin: 27px auto 0;
   padding: 13px 18px;
   border: 1px solid #d981a2;
@@ -548,15 +548,15 @@ button {
   .countdown-section { margin-inline: 3px; }
   .countdown__item { min-height: 70px; }
   .love-note {
-    grid-template-columns: 84px minmax(0, 1fr) 74px;
-    gap: 3px;
+    grid-template-columns: 92px minmax(0, 1fr) 88px;
+    gap: 1px;
     min-height: 190px;
-    margin-top: 54px;
+    margin: 54px -18px 0;
     padding: 24px 0;
   }
   .love-note p { font-size: 20px; }
-  .love-bouquet { left: -12px; width: 108px; }
-  .love-baby { right: -7px; width: 91px; }
+  .love-bouquet { left: -23px; width: 116px; }
+  .love-baby { right: -22px; width: 108px; }
   .date-section { padding-inline: 10px; }
   .date-cards { gap: 6px; }
   .date-section__title { font-size: 8px; }
