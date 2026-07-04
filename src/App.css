@@ -1,14 +1,12 @@
 :root {
-  color: #73485b;
+  color: #6f4657;
   background: #e8ddd2;
   font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html {
   overflow-x: hidden;
@@ -22,13 +20,8 @@ body {
   overflow-x: hidden;
 }
 
-button {
-  font: inherit;
-}
-
-#root {
-  min-height: 100dvh;
-}
+button { font: inherit; }
+#root { min-height: 100dvh; }
 
 .app-shell {
   position: relative;
@@ -41,9 +34,7 @@ button {
   box-shadow: 0 0 60px rgb(83 53 48 / 16%);
 }
 
-.app-shell.opening-active {
-  height: 100dvh;
-}
+.app-shell.opening-active { height: 100dvh; }
 
 .opening-screen {
   position: fixed;
@@ -57,10 +48,7 @@ button {
   border: 0;
   cursor: pointer;
   color: #f4b5ce;
-  background-color: #f6f1e9;
-  background-image: url("/assets/main-bg.jpg");
-  background-position: center;
-  background-size: cover;
+  background: #f6f1e9 url("/assets/main-bg.jpg") center / cover;
   opacity: 1;
   transition: opacity 800ms ease, filter 800ms ease;
   -webkit-tap-highlight-color: transparent;
@@ -85,24 +73,22 @@ button {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 22%;
-  background: linear-gradient(to bottom, transparent, rgb(181 105 135 / 6%));
+  height: 24%;
+  background: linear-gradient(to bottom, transparent, rgb(160 81 111 / 12%));
 }
 
 .opening-screen__prompt {
   position: absolute;
   z-index: 1;
   left: 50%;
-  bottom: max(7%, calc(env(safe-area-inset-bottom) + 24px));
+  bottom: max(6%, calc(env(safe-area-inset-bottom) + 22px));
   transform: translateX(-50%);
-  color: #c8638b;
+  color: #c25380;
   font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
-  font-size: 25px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: lowercase;
+  font-size: 24px;
+  letter-spacing: 0.02em;
   white-space: nowrap;
-  text-shadow: 0 1px 0 rgb(255 255 255 / 90%), 0 0 14px rgb(235 128 169 / 42%);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 95%), 0 0 16px rgb(235 128 169 / 46%);
   animation: prompt-pulse 2.2s ease-in-out infinite;
 }
 
@@ -110,12 +96,13 @@ button {
   position: relative;
   isolation: isolate;
   min-height: 100dvh;
-  padding: max(54px, calc(env(safe-area-inset-top) + 26px)) 18px calc(28px + env(safe-area-inset-bottom));
+  padding: max(45px, calc(env(safe-area-inset-top) + 24px)) 18px calc(28px + env(safe-area-inset-bottom));
   overflow: hidden;
-  background-color: #f8f4ed;
-  background-image: linear-gradient(rgb(255 252 247 / 12%), rgb(255 252 247 / 12%)), url("/assets/main-bg.jpg");
-  background-size: cover;
-  background-position: top center;
+  background:
+    radial-gradient(circle at 15% 9%, rgb(244 174 201 / 22%), transparent 25%),
+    radial-gradient(circle at 90% 36%, rgb(234 155 188 / 14%), transparent 24%),
+    linear-gradient(rgb(255 252 247 / 28%), rgb(255 252 247 / 28%)),
+    url("/assets/main-bg.jpg") top center / cover;
   opacity: 0;
   transform: scale(1.01);
   transition: opacity 950ms ease, transform 1200ms ease;
@@ -126,391 +113,194 @@ button {
   transform: scale(1);
 }
 
-.decorations {
+.floating-hearts {
   position: absolute;
-  z-index: 1;
+  z-index: -1;
   inset: 0;
   pointer-events: none;
 }
 
-.decoration {
+.floating-hearts span {
   position: absolute;
-  display: block;
-  max-width: none;
-  object-fit: contain;
-  filter: drop-shadow(0 5px 5px rgb(94 62 55 / 8%));
-  user-select: none;
+  color: rgb(201 96 138 / 28%);
+  font-family: Georgia, serif;
+  animation: float 5s ease-in-out infinite;
 }
 
-.top-photo {
-  z-index: 3;
-  top: 165px;
-  left: 50%;
-  width: 140px;
-  transform: translateX(-50%) rotate(-1.5deg);
+.floating-hearts span:nth-child(1) { top: 7%; left: 7%; font-size: 24px; }
+.floating-hearts span:nth-child(2) { top: 19%; right: 8%; font-size: 18px; animation-delay: -1.5s; }
+.floating-hearts span:nth-child(3) { top: 62%; left: 4%; font-size: 18px; animation-delay: -3s; }
+.floating-hearts span:nth-child(4) { top: 82%; right: 5%; font-size: 21px; animation-delay: -2s; }
+
+.birthday-header { text-align: center; }
+
+.birthday-date {
+  margin: 0 0 13px;
+  color: #9a697a;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
 }
 
-.stars-left {
-  top: 190px;
-  left: 5px;
-  width: 82px;
-  transform: rotate(-12deg);
-}
-
-.stars-right {
-  top: 192px;
-  right: 4px;
-  width: 78px;
-  transform: rotate(11deg);
-}
-
-.polaroid-line {
-  z-index: 2;
-  top: 380px;
-  left: 50%;
-  width: 114%;
-  transform: translateX(-50%);
-}
-
-.birthday-header,
-.collage-space,
-.countdown-section,
-.love-note,
-.date-section,
-.birthday-footer {
-  position: relative;
-  z-index: 4;
-}
-
-.birthday-header {
-  text-align: center;
-}
-
-.script-title {
-  margin: 2px 0 0;
-  color: #c7658c;
+.birthday-header h1 {
+  margin: 0;
+  color: #c45f88;
   font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
-  max-width: 100%;
-  font-size: clamp(35px, 9.7vw, 42px);
+  font-size: clamp(38px, 11vw, 49px);
   font-weight: 400;
   line-height: 1;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  text-shadow: 0 2px 0 rgb(255 255 255 / 75%);
+  text-shadow: 0 2px 0 rgb(255 255 255 / 80%);
   transform: rotate(-1deg);
 }
 
-.tiny-dedication {
-  margin: 9px 0 0;
-  color: #aa536f;
+.birthday-subtitle {
+  margin: 13px 0 0;
+  color: #9b6d7c;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 11px;
   font-style: italic;
-  letter-spacing: 0.36em;
-  text-shadow: 0 1px 0 rgb(255 255 255 / 85%);
+  letter-spacing: 0.06em;
 }
 
-.collage-space {
-  height: 508px;
-}
-
-.countdown-section {
-  margin: 44px 8px 0;
-  padding: 17px 2px 20px;
-  text-align: center;
-  border: 0;
-  border-top: 1px solid rgb(200 116 148 / 30%);
-  border-bottom: 1px solid rgb(200 116 148 / 30%);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 0 0 14px;
-  color: #9b5b70;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 12px;
-  font-style: italic;
-  letter-spacing: 0.07em;
-}
-
-.eyebrow::before,
-.eyebrow::after {
-  content: "";
-  width: 34px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #dca3b8);
-}
-
-.eyebrow::after {
-  transform: scaleX(-1);
-}
-
-.countdown {
+.portrait-moment {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-
-.countdown__item {
-  position: relative;
-  display: flex;
-  min-width: 0;
-  min-height: 75px;
-  padding: 7px 2px 5px;
-  flex-direction: column;
+  grid-template-columns: 1fr 132px 1fr;
   align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  gap: 5px;
+  width: 100%;
+  margin: 30px auto 25px;
 }
 
-.countdown__item:not(:last-child)::after {
-  content: "";
+.portrait-moment img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 6px rgb(92 57 56 / 9%));
+}
+
+.portrait-moment .portrait-moment__photo {
+  width: 132px;
+  transform: rotate(-2deg);
+}
+
+.letter-card {
+  position: relative;
+  min-height: 760px;
+  margin: 0 3px;
+  padding: 43px 28px 40px;
+  border: 1px solid rgb(189 126 145 / 18%);
+  background:
+    linear-gradient(90deg, transparent 0 22px, rgb(213 133 160 / 14%) 22px 23px, transparent 23px),
+    repeating-linear-gradient(transparent 0 31px, rgb(181 132 145 / 11%) 31px 32px),
+    rgb(255 253 248 / 91%);
+  box-shadow: 0 18px 50px rgb(101 66 67 / 13%);
+  transform: rotate(-0.35deg);
+}
+
+.letter-card__tape {
   position: absolute;
-  top: 13px;
-  right: 0;
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(transparent, rgb(202 118 150 / 36%), transparent);
+  top: -9px;
+  left: 50%;
+  width: 88px;
+  height: 23px;
+  transform: translateX(-50%) rotate(1.5deg);
+  background: rgb(226 160 184 / 48%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 22%);
 }
 
-.countdown__number {
-  color: #a94f74;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(31px, 8.6vw, 38px);
-  font-variant-numeric: tabular-nums;
+.letter-card__greeting {
+  margin: 0 0 25px;
+  color: #a84f71;
+  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: 27px;
   line-height: 1;
 }
 
-.countdown__label {
-  margin-top: 9px;
-  color: #9c7b83;
-  font-size: 6.5px;
-  font-weight: 700;
-  letter-spacing: 0.17em;
-}
-
-.countdown__divider {
-  display: none;
-}
-
-.love-note {
-  display: grid;
-  grid-template-columns: 108px minmax(0, 1fr) 104px;
-  align-items: center;
-  gap: 2px;
-  min-height: 205px;
-  margin: 62px -18px 0;
-  padding: 28px 0;
-  overflow: hidden;
-  text-align: center;
-}
-
-.love-note::before {
-  display: none;
-}
-
-.love-note__copy {
-  position: relative;
-  z-index: 2;
-  min-width: 0;
-}
-
-.love-note p {
+.letter-card__body {
+  min-height: 555px;
   margin: 0;
-  color: #b65e80;
-  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
-  font-size: 23px;
-  line-height: 1.1;
-  white-space: nowrap;
-  text-shadow: 0 1px 0 #fff;
+  color: #654b53;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 2.02;
+  white-space: pre-wrap;
 }
 
-.love-note span {
-  display: block;
-  margin-top: 9px;
-  color: #d8789d;
-  font-family: Georgia, serif;
-  font-size: 24px;
-  animation: heart-beat 1.8s ease-in-out infinite;
+.typing-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.14em;
+  background: #c65e87;
+  animation: cursor-blink 700ms steps(1) infinite;
 }
 
-.love-decoration {
-  position: relative;
-  z-index: 1;
-  display: block;
-  object-fit: contain;
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 5px 5px rgb(94 62 55 / 8%));
+.letter-signature {
+  margin-top: 25px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 900ms ease, transform 900ms ease;
 }
 
-.love-bouquet {
-  left: -20px;
-  width: 132px;
-  transform: rotate(6deg);
+.letter-signature--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.love-baby {
-  right: 24px;
-  width: 165px;
-  transform: rotate(-3deg);
-}
-
-.date-section {
-  margin-top: 32px;
-  padding: 37px 12px 30px;
-  border: 1px solid rgb(192 108 140 / 20%);
-  border-radius: 30px;
-  text-align: center;
-  background: rgb(255 253 249 / 78%);
-  box-shadow: 0 14px 45px rgb(102 66 64 / 9%);
-  backdrop-filter: blur(5px);
-}
-
-.date-section::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  width: 62px;
-  height: 16px;
-  transform: translateX(-50%) rotate(-2deg);
-  background: rgb(227 164 187 / 40%);
-}
-
-.date-section__title {
-  margin: 0;
-  color: #93586d;
-  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.18em;
-}
-
-.date-section__subtitle {
-  margin: 9px 0 25px;
-  color: #bd718d;
+.letter-signature p {
+  margin: 0 0 7px;
+  color: #78606a;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 13px;
   font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: none;
 }
 
-.date-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  width: 100%;
+.letter-signature span {
+  color: #bd5f83;
+  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: 25px;
 }
 
-.date-card {
-  position: relative;
-  width: 100%;
-  min-width: 0;
-  min-height: 108px;
-  padding: 15px 2px 12px;
-  border: 1px solid #ead2da;
-  border-radius: 16px;
-  color: #805a67;
-  background: rgb(255 255 255 / 62%);
-  box-shadow: 0 4px 12px rgb(113 75 79 / 5%);
-  cursor: pointer;
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
-  -webkit-tap-highlight-color: transparent;
+.ending {
+  padding: 49px 0 28px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 1s ease 400ms, transform 1s ease 400ms;
 }
 
-.date-card:active {
-  transform: scale(0.97);
+.ending--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-.date-card--selected {
-  border-color: #d67c9e;
-  color: #a44f70;
-  background: linear-gradient(145deg, rgb(255 250 252 / 95%), rgb(248 221 232 / 85%));
-  box-shadow: 0 9px 22px rgb(205 104 143 / 22%), 0 0 0 2px rgb(235 153 184 / 14%);
-  transform: translateY(-5px);
+.ending p {
+  margin: 0 0 19px;
+  color: #aa5a78;
+  font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: 23px;
 }
 
-.date-card--selected:active {
-  transform: translateY(-2px) scale(0.98);
-}
-
-.date-card__day,
-.date-card__date,
-.date-card__heart {
-  display: block;
-}
-
-.date-card__day {
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.26em;
-}
-
-.date-card__date {
-  margin-top: 9px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 15px;
-  line-height: 1.1;
-}
-
-.date-card__heart {
-  margin-top: 11px;
-  color: #d66f97;
-  font-family: Georgia, serif;
-  font-size: 14px;
-}
-
-.submit-date {
-  width: min(100%, 100px);
-  margin: 27px auto 0;
-  padding: 13px 18px;
-  border: 1px solid #d981a2;
+.ending button {
+  padding: 10px 19px;
+  border: 1px solid rgb(192 103 136 / 38%);
   border-radius: 999px;
-  color: #fffafc;
-  background: linear-gradient(135deg, #cf7395, #b95f82);
-  box-shadow: 0 8px 20px rgb(190 94 130 / 22%);
+  color: #a15873;
+  background: rgb(255 253 249 / 58%);
   cursor: pointer;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  transition: transform 180ms ease, box-shadow 180ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-.submit-date:active {
-  transform: translateY(2px) scale(0.98);
-  box-shadow: 0 4px 11px rgb(190 94 130 / 18%);
-}
-
-.submit-message {
-  min-height: 16px;
-  margin: 11px 0 0;
-  color: #ae6880;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 10px;
-  font-style: italic;
-  letter-spacing: 0.04em;
-}
-
-.birthday-footer {
-  padding: 24px 0 2px;
-  color: #b89aa4;
+.birthday-page footer {
+  padding-top: 12px;
+  color: #b795a1;
   text-align: center;
   font-size: 7px;
   font-weight: 600;
@@ -523,43 +313,26 @@ button {
   50% { opacity: 1; transform: translateX(-50%) scale(1.025); }
 }
 
-@keyframes heart-beat {
-  0%, 100% { transform: scale(1); }
-  45% { transform: scale(1.15); }
+@keyframes cursor-blink {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-9px) rotate(5deg); }
 }
 
 @media (min-width: 431px) {
-  body {
-    background: radial-gradient(circle at 50% 20%, #f4ece4, #ddd0c5);
-  }
-
-  .app-shell {
-    min-height: 100dvh;
-  }
+  body { background: radial-gradient(circle at 50% 20%, #f4ece4, #ddd0c5); }
 }
 
 @media (max-width: 360px) {
-  .birthday-page { padding-top: max(48px, calc(env(safe-area-inset-top) + 22px)); }
-  .top-photo { top: 155px; width: 126px; }
-  .stars-left { top: 181px; left: 1px; width: 72px; }
-  .stars-right { top: 183px; right: 1px; width: 70px; }
-  .polaroid-line { top: 362px; width: 118%; }
-  .collage-space { height: 486px; }
-  .countdown-section { margin-inline: 3px; }
-  .countdown__item { min-height: 70px; }
-  .love-note {
-    grid-template-columns: 92px minmax(0, 1fr) 88px;
-    gap: 1px;
-    min-height: 190px;
-    margin: 54px -18px 0;
-    padding: 24px 0;
-  }
-  .love-note p { font-size: 20px; }
-  .love-bouquet { left: -23px; width: 116px; }
-  .love-baby { right: -22px; width: 108px; }
-  .date-section { padding-inline: 10px; }
-  .date-cards { gap: 6px; }
-  .date-section__title { font-size: 8px; }
+  .birthday-page { padding-inline: 14px; }
+  .portrait-moment { grid-template-columns: 1fr 116px 1fr; }
+  .portrait-moment .portrait-moment__photo { width: 116px; }
+  .letter-card { min-height: 800px; padding: 40px 23px 36px; }
+  .letter-card__body { min-height: 610px; font-size: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
