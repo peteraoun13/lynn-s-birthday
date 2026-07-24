@@ -30,7 +30,7 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div className="countdown" aria-label="Countdown until Lynn's birthday">
+    <div className="countdown" aria-label="Countdown until Joe's birthday">
       {units.map(([key, label], index) => (
         <div className="countdown__item" key={key}>
           <span className="countdown__number">

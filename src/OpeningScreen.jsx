@@ -4,14 +4,14 @@ export default function OpeningScreen({ isFading, onStart }) {
       className={`opening-screen ${isFading ? "opening-screen--fading" : ""}`}
       onClick={onStart}
       type="button"
-      aria-label="Open Lynn's birthday letter"
+      aria-label="Open Joe's birthday letter"
     >
       <img
         className="opening-screen__art"
-        src="/assets/opening-page.png"
-        alt="A pink birthday collage made for Lynn"
+        src="/assets/joe-entrance.png"
+        alt="A blue birthday collage for Joe"
       />
-      <span className="opening-screen__prompt">tap to open your letter ♡</span>
+      <span className="opening-screen__prompt">tap to open</span>
     </button>
   );
 }

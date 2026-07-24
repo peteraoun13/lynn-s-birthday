@@ -8,9 +8,7 @@ export default function DateCard({ day, date, selected, onSelect }) {
     >
       <span className="date-card__day">{day}</span>
       <span className="date-card__date">{date}</span>
-      <span className="date-card__heart" aria-hidden="true">
-        {selected ? "♥" : "♡"}
-      </span>
+      <span className="date-card__mark" aria-hidden="true">{selected ? "★" : "·"}</span>
     </button>
   );
 }
