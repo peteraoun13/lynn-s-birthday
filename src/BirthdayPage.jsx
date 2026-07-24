@@ -71,7 +71,7 @@ export default function BirthdayPage({ isRevealed }) {
         <div className={`letter-signature ${isFinished ? "letter-signature--visible" : ""}`}><span>with love, always</span></div>
       </section>
       <div className={`ending ${isFinished ? "ending--visible" : ""}`}><p>happy birthday, Joe.</p><button type="button" onClick={replayLetter}>read it again</button></div>
-      <footer>made for Joe · 2026</footer>
+      <footer>made for Joe · 2026 ·</footer>
     </article>
   );
 }
