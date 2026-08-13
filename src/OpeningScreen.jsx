@@ -1,17 +1,15 @@
-export default function OpeningScreen({ isFading, onStart }) {
+export default function OpeningScreen({ onStart }) {
   return (
-    <button
-      className={`opening-screen ${isFading ? "opening-screen--fading" : ""}`}
-      onClick={onStart}
-      type="button"
-      aria-label="Open Joe's birthday letter"
-    >
-      <img
-        className="opening-screen__art"
-        src="/assets/joe-entrance.png"
-        alt="A blue birthday collage for Joe"
-      />
-      <span className="opening-screen__prompt">tap to open</span>
+    <button className="opening-screen" onClick={onStart} type="button" aria-label="Open Randall's birthday surprise">
+      <span className="opening-screen__paper" aria-hidden="true" />
+      <span className="opening-screen__eyebrow">A LITTLE SOMETHING FOR YOU</span>
+      <span className="opening-screen__gallery" aria-label="Photo memories">
+        <span className="opening-screen__photo-frame opening-screen__photo-frame--one"><span /></span>
+        <span className="opening-screen__photo-frame opening-screen__photo-frame--two"><span /></span>
+        <span className="opening-screen__photo-frame opening-screen__photo-frame--three"><span /></span>
+      </span>
+      <span className="opening-screen__ornament" aria-hidden="true"><i /></span>
+      <span className="opening-screen__prompt">Tap to begin</span>
     </button>
   );
 }
