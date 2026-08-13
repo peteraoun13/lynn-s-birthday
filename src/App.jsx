@@ -3,24 +3,39 @@ import OpeningScreen from "./OpeningScreen";
 import BirthdayPage from "./BirthdayPage";
 
 export default function App() {
-  const [hasOpened, setHasOpened] = useState(false);
+  const [activeView, setActiveView] = useState("menu");
   const [videoComplete, setVideoComplete] = useState(false);
   const videoRef = useRef(null);
+  const musicRef = useRef(null);
 
-  const openSurprise = () => {
-    setHasOpened(true);
-    window.setTimeout(() => videoRef.current?.play().catch(() => {}), 250);
+  const openView = (view) => {
+    musicRef.current?.play().catch(() => {});
+    setActiveView(view);
+    if (view === "video") {
+      setVideoComplete(false);
+      window.setTimeout(() => videoRef.current?.play().catch(() => {}), 180);
+    }
+  };
+
+  const replayVideo = () => {
+    setVideoComplete(false);
+    videoRef.current.currentTime = 0;
+    videoRef.current.play().catch(() => {});
   };
 
   return (
-    <main className={`app-shell ${hasOpened ? "app-shell--opened" : ""}`}>
-      {!hasOpened && <OpeningScreen onStart={openSurprise} />}
-      {hasOpened && (
+    <main className="app-shell">
+      <audio ref={musicRef} src="/assets/randall-song.mp3" loop preload="auto" />
+      {activeView === "menu" ? (
+        <OpeningScreen onSelect={openView} />
+      ) : (
         <BirthdayPage
+          activeView={activeView}
           videoRef={videoRef}
           videoComplete={videoComplete}
           onVideoComplete={() => setVideoComplete(true)}
-          onVideoReplay={() => setVideoComplete(false)}
+          onReplay={replayVideo}
+          onNavigate={openView}
         />
       )}
     </main>
