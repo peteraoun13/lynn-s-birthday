@@ -122,6 +122,7 @@ button { font:inherit; }
 
 .video-page .scroll-cue { bottom:max(7%,calc(env(safe-area-inset-bottom) + 24px)); display:block; padding:9px 0; border-bottom:1px solid rgb(255 255 255 / 42%); color:#fff; font-size:9px; letter-spacing:.15em; line-height:1; text-shadow:0 2px 12px rgb(0 0 0 / 66%); }
 .video-page .scroll-cue b { margin-left:7px; font-size:14px; vertical-align:-1px; animation:none; }
+.birthday-page.content-page { height:auto; min-height:100dvh; overflow:visible; }
 
 /* Refined little cake: one clean candle, cream, and a cherry on top. */
 .memory-celebration .wish-cake { width:108px; height:112px; }
