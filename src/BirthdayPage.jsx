@@ -1,12 +1,28 @@
 import { useEffect, useState } from "react";
 
-const letter = `Happy birthday, Randall.
+const letter = `Dear Randall,
 
-Today is for celebrating you — the person you are, the moments you have made, and all the good still ahead of you.
+I don’t even know where I should start. Should I start with Happy Birthday? Or with telling you that you are my favorite human? Or that I thank God for you every single day? Or that you are such an example of what it means to be a real man? Or that I love you so much? Or that you will always be my one and only best friend?
 
-I hope this next year brings you happiness, peace, and every opportunity you deserve. May it be filled with good people, unforgettable memories, and reasons to be proud of yourself.
+And still, all of these words could never describe who you are in my heart.
 
-Here’s to you, to new memories, and to a beautiful year ahead.`;
+I was searching for the right words to write to you, but I realized that there probably aren’t enough words to explain what you mean to me. You became such an important part of my life that sometimes I don’t even remember what life felt like before having you in it.
+
+You are not only my best friend. You are someone I look up to, someone I trust with all my heart, someone I can laugh with, talk to about anything, and simply be myself around. You have shown me through your actions what kindness, loyalty, strength, generosity, and love really look like.
+
+I thank God for every conversation, every laugh, every memory, every piece of advice, every stupid moment, and even every disagreement, because every single one of them became part of a friendship that I would never trade for anything.
+
+You have a heart that is so rare, Randall. You give so much of yourself to the people you love, and sometimes I wonder if you even realize how much you mean to everyone around you. I hope you always remember how loved, appreciated, and important you are.
+
+May God protect you wherever you go and keep you safe from every harm. May He give you health, peace, strength, and many beautiful years ahead. May He bless every step you take, every decision you make, and every dream you carry in your heart. May He always surround you with people who love you genuinely and give back to you even a little of the love and goodness that you give to everyone else.
+
+I pray that God never lets sadness stay in your heart for too long, that He gives you strength whenever life becomes heavy, and that He always reminds you that you are never alone. May He open beautiful doors for you, protect your heart, fill your days with happiness, and grant you everything you secretly pray for.
+
+No matter how much time passes or where life takes us, I hope you always know that you have me. Always.
+
+You are my best friend, my favorite human, one of the greatest blessings God has ever put in my life, and someone I will forever be grateful for.
+
+Happy Birthday, Randall.`;
 
 function BackButton({ onClick }) {
   return <button className="back-button" type="button" onClick={onClick}>← Back</button>;
@@ -86,7 +102,6 @@ export default function BirthdayPage({ activeView, videoRef, videoComplete, onVi
       <BackButton onClick={() => onNavigate("menu")} />
       <section className="letter-section letter-section--open" aria-label="Birthday letter">
         <article className="letter-card">
-          <p className="letter-card__greeting">dear Randall,</p>
           <p className="letter-card__body">{letter.slice(0, letterLength)}{letterLength < letter.length && <span className="typing-cursor" aria-hidden="true" />}</p>
           <p className={`letter-card__signature ${letterLength === letter.length ? "letter-card__signature--visible" : ""}`}>with warm wishes</p>
         </article>
